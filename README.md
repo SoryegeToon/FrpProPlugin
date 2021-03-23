@@ -51,8 +51,6 @@ plugin = socks5
 
 
 
-![image-20210323183221594](README.assets/image-20210323183221594.png)
-
 ## 功能介绍
 
 主要包括upload,指定frpc的位置,这里需要注意观察一下,先要确保frpc.exe完整上传了
