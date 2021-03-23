@@ -7,6 +7,52 @@
 
 
 
+## 快速使用
+
+服务端部署:
+
+```
+1. 下载服务端
+wget https://github.com/mstxq17/FrpProPlugin/releases/download/v1.0/frp_0.33.0_linux_amd64.tar.gz
+2. 解压服务端
+tar -xzvf frp_0.33.0_linux_amd64.tar.gz
+3. 编辑服务端配置文件
+vim frps.ini
+############
+[common]
+bind_addr = 0.0.0.0
+bind_port = 7003
+############
+4.启动程序
+tmux # 新开窗口
+./frps -c frps.ini
+```
+
+
+
+客户端部署:
+
+```
+1.编辑客户端配置文件
+vim frpc.ini
+
+#############
+[common]
+server_addr = server_ip
+server_port = 7003
+protocol = tcp
+tls_enable = true
+
+[plugin_socks5]
+type = tcp
+remote_port = 6006
+plugin = socks5
+```
+
+
+
+![image-20210323183221594](README.assets/image-20210323183221594.png)
+
 ## 功能介绍
 
 主要包括upload,指定frpc的位置,这里需要注意观察一下,先要确保frpc.exe完整上传了
