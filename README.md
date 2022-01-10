@@ -1,5 +1,9 @@
 # FrpProPlugin
- frp0.33修改版,过流量检测,免杀,支持加载远程配置文件可用于cs直接使用的插件。需要服务端适配，可以在release下载对应平台的服务端。
+基于frp0.33修改版,过流量检测,免杀,支持加载远程配置文件可用于cs直接使用的插件。
+
+需要服务端适配，可以在release下载对应平台的服务端。
+
+免责声明:
 
 本工具只为学习使用，请在有授权的情况使用，切勿用来做违法乱纪之事。
 
@@ -7,17 +11,23 @@
 
 2021.2.19 免杀更新+缩小体积
 
+2022.1.10 使用go-strip进行混淆，upx压缩，重新启动该项目研究。
+
 
 
 ## 快速使用
 
 服务端部署:
 
-```
-1. 下载服务端
+```bash
+#1. 下载服务端
 wget https://github.com/mstxq17/FrpProPlugin/releases/download/v1.0/frp_0.33.0_linux_amd64.tar.gz
-2. 解压服务端
+# 国内访问Github缓慢，可以尝试代理URL加速
+wget https://ghproxy.com/https://github.com/mstxq17/FrpProPlugin/releases/download/v1.0/frp_0.33.0_linux_amd64.tar.gz
+
+#2. 解压服务端
 tar -xzvf frp_0.33.0_linux_amd64.tar.gz
+cd frp_0.33.0_linux_amd64
 3. 编辑服务端配置文件
 vim frps.ini
 ############
@@ -34,11 +44,12 @@ tmux # 新开窗口
 
 客户端部署:
 
-```
+```bash
 1.编辑客户端配置文件
 vim frpc.ini
 
 #############
+#快速获取server_ip:curl -s cip.cc|grep 'IP'
 [common]
 server_addr = server_ip
 server_port = 7003
@@ -49,6 +60,7 @@ tls_enable = true
 type = tcp
 remote_port = 6006
 plugin = socks5
+
 ```
 
 
